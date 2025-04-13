@@ -4,9 +4,6 @@ from pprint import pprint
 import tkinter as tk
 from sudokuGUI import SudokuGUI
 
-solver(empty_grid)
-pprint(empty_grid)
-
 root = tk.Tk()
 app = SudokuGUI(root)
 root.mainloop()
