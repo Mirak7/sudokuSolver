@@ -6,13 +6,6 @@ def find_empty(grid):
                 return i, j
     return False
 
-# check every cell of the grid if valid or not
-def check_valid(grid):
-    for i in range(len(grid)):
-        for j in range(len(grid)):
-            if(not check_col(grid, i, j) or not check_col(grid, i, j)):
-                return i, j
-    return True
 
 # check if grid cell is a valid one row wise
 def check_row(grid, num, row):
@@ -28,8 +21,17 @@ def check_col(grid, num, col):
         
     return True
 
-#def check_neighbor(grid, i, j):
+def check_neighbor(grid, num, row, col):
+    row_pos = (row // 3) * 3
+    col_pos = (col // 3) * 3
     
+    for i in range(row_pos + 3):
+        for j in range(col_pos + 3):
+            if grid[i][j] == num:
+                return False
+    
+    return True
+
 
 grid = [[1, 2, 3, 4, 5, 6, 7, 8, 9],
         [2, 2, 3, 4, 5, 6, 7, 8, 9],
@@ -54,5 +56,6 @@ sudoku_grid = [
     [2, 8, 7, 4, 1, 9, 6, 3, 5],
     [3, 4, 5, 2, 8, 6, 1, 7, 9]
 ]
-print(check_col(sudoku_grid, 1))
+
+print(check_neighbor(sudoku_grid, 2, 1, 1))
 #print(check_valid(sudoku_grid))
