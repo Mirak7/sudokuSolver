@@ -19,7 +19,9 @@ class SudokuGUI:
         self.create_cells()
 
         solve_btn = tk.Button(master, text="Solve", command=self.solve, bg="white", relief="flat")
+        clear_btn = tk.Button(master, text="Clear", command=self.clear, bg="white", relief="flat")
         solve_btn.pack(fill='x', padx=10, pady=10)
+        clear_btn.pack(fill='x', padx=10, pady=10)
 
     def draw_grid(self):
         for i in range(GRID_SIZE + 1):
@@ -61,4 +63,7 @@ class SudokuGUI:
         else:
             print("No solution found")
 
-# Insert your solver and helper functions here...
+    def clear(self):
+        for i in range(GRID_SIZE):
+            for j in range(GRID_SIZE):
+                self.cells[i][j].delete(0, tk.END)
